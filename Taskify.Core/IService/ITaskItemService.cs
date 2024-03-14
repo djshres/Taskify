@@ -8,7 +8,7 @@ namespace Taskify.Core.IService
         Task<TaskItem> GetTaskById(int id);
         Task CreateTask(TaskItem item);
         Task UpdateTask(TaskItem item);
-        Task DeleteTask(int id);
+        Task DeleteTask(TaskItem item);
         bool Exist(int id);
     }
 }

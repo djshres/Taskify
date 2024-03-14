@@ -15,32 +15,32 @@ namespace Taskify.Core
 
         public async Task CreateTask(TaskItem item)
         {
-            await _taskItemRepository.CreateTask(item);
+            await _taskItemRepository.Create(item);
         }
 
-        public async Task DeleteTask(int id)
+        public async Task DeleteTask(TaskItem item)
         {
-            await _taskItemRepository.DeleteTask(id);
+            await _taskItemRepository.Delete(item);
         }
 
         public bool Exist(int id)
         {
-            return _taskItemRepository.Exist(id);
+            return _taskItemRepository.Count(x => x.Id == id) == 0;
         }
 
         public async Task<IEnumerable<TaskItem>> GetAllTasks()
         {
-            return await _taskItemRepository.GetAllTasks();
+            return await _taskItemRepository.GetAll();
         }
 
         public async Task<TaskItem> GetTaskById(int id)
         {
-            return await _taskItemRepository.GetTaskById(id);
+            return await _taskItemRepository.GetById(id);
         }
 
         public async Task UpdateTask(TaskItem item)
         {
-            await _taskItemRepository.UpdateTask(item);
+            await _taskItemRepository.Update(item);
         }
     }
 }

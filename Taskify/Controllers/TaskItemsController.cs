@@ -116,7 +116,7 @@ namespace Taskify.Controllers
             var taskItem = await _taskItemService.GetTaskById(id);
             if (taskItem != null)
             {
-                await _taskItemService.DeleteTask(id);
+                await _taskItemService.DeleteTask(taskItem);
             }
 
             return RedirectToAction(nameof(Index));

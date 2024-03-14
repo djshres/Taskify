@@ -2,13 +2,8 @@
 
 namespace Taskify.Data.Repository.IRepository
 {
-    public interface ITaskItemRepository
+    public interface ITaskItemRepository : IRepository<TaskItem>
     {
-        Task<IEnumerable<TaskItem>> GetAllTasks();
-        Task<TaskItem> GetTaskById(int id);
-        Task CreateTask(TaskItem item);
-        Task UpdateTask(TaskItem item);
-        Task DeleteTask(int id);
-        bool Exist(int id);
+       
     }
 }
