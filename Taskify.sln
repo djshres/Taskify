@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34707.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taskify", "Taskify\Taskify.csproj", "{1091D493-8943-4FF7-B39B-17D44A6BAE98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskify", "Taskify\Taskify.csproj", "{1091D493-8943-4FF7-B39B-17D44A6BAE98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4DA34FD4-9996-4816-9744-38071BBEE36D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{660E8380-508D-478E-B009-330E804D24BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskify.Models", "Taskify.Models\Taskify.Models.csproj", "{88C2D266-2E92-4EDB-BB4F-B664E10456E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskify.Data", "Taskify.Data\Taskify.Data.csproj", "{4EEF56E8-9CFB-49A5-9671-C1F256D55862}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taskify.Core", "Taskify.Core\Taskify.Core.csproj", "{4D1F36A9-09BC-4CBF-B626-7DD822E498C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,27 @@ Global
 		{1091D493-8943-4FF7-B39B-17D44A6BAE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1091D493-8943-4FF7-B39B-17D44A6BAE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1091D493-8943-4FF7-B39B-17D44A6BAE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C2D266-2E92-4EDB-BB4F-B664E10456E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C2D266-2E92-4EDB-BB4F-B664E10456E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C2D266-2E92-4EDB-BB4F-B664E10456E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C2D266-2E92-4EDB-BB4F-B664E10456E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EEF56E8-9CFB-49A5-9671-C1F256D55862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EEF56E8-9CFB-49A5-9671-C1F256D55862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EEF56E8-9CFB-49A5-9671-C1F256D55862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EEF56E8-9CFB-49A5-9671-C1F256D55862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1F36A9-09BC-4CBF-B626-7DD822E498C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1F36A9-09BC-4CBF-B626-7DD822E498C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1F36A9-09BC-4CBF-B626-7DD822E498C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1F36A9-09BC-4CBF-B626-7DD822E498C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1091D493-8943-4FF7-B39B-17D44A6BAE98} = {4DA34FD4-9996-4816-9744-38071BBEE36D}
+		{88C2D266-2E92-4EDB-BB4F-B664E10456E6} = {4DA34FD4-9996-4816-9744-38071BBEE36D}
+		{4EEF56E8-9CFB-49A5-9671-C1F256D55862} = {4DA34FD4-9996-4816-9744-38071BBEE36D}
+		{4D1F36A9-09BC-4CBF-B626-7DD822E498C5} = {4DA34FD4-9996-4816-9744-38071BBEE36D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {674A645D-B75B-4BAF-A42A-8BCFEFA61C56}

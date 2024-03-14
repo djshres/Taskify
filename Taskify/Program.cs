@@ -1,9 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Taskify.Core;
+using Taskify.Core.IService;
 using Taskify.Data;
+using Taskify.Data.Repository;
+using Taskify.Data.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TaskifyContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskifyContext") ?? throw new InvalidOperationException("Connection string 'TaskifyContext' not found.")));
+
+builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+builder.Services.AddScoped<ITaskItemService, TaskItemService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,35 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Taskify.Data;
+using Taskify.Core.IService;
 using Taskify.Models;
 
 namespace Taskify.Controllers
 {
     public class TaskItemsController : Controller
     {
-        private readonly TaskifyContext _context;
+        private readonly ITaskItemService _taskItemService;
 
-        public TaskItemsController(TaskifyContext context)
+        public TaskItemsController(ITaskItemService taskItemService)
         {
-            _context = context;
+            _taskItemService = taskItemService;
         }
 
         // GET: TaskItems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TaskItem.ToListAsync());
+            // return View(await _context.TaskItem.ToListAsync());
+            return View(await _taskItemService.GetAllTasks());
         }
 
         // GET: TaskItems/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var taskItem = await _taskItemService.GetTaskById(id);
 
-            var taskItem = await _context.TaskItem
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (taskItem == null)
             {
                 return NotFound();
@@ -51,22 +47,16 @@ namespace Taskify.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(taskItem);
-                await _context.SaveChangesAsync();
+                await _taskItemService.CreateTask(taskItem);
                 return RedirectToAction(nameof(Index));
             }
             return View(taskItem);
         }
 
         // GET: TaskItems/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taskItem = await _context.TaskItem.FindAsync(id);
+            var taskItem = await _taskItemService.GetTaskById(id);
             if (taskItem == null)
             {
                 return NotFound();
@@ -88,8 +78,7 @@ namespace Taskify.Controllers
             {
                 try
                 {
-                    _context.Update(taskItem);
-                    await _context.SaveChangesAsync();
+                    await _taskItemService.UpdateTask(taskItem);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -108,15 +97,9 @@ namespace Taskify.Controllers
         }
 
         // GET: TaskItems/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taskItem = await _context.TaskItem
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var taskItem = await _taskItemService.GetTaskById(id);
             if (taskItem == null)
             {
                 return NotFound();
@@ -130,19 +113,18 @@ namespace Taskify.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var taskItem = await _context.TaskItem.FindAsync(id);
+            var taskItem = await _taskItemService.GetTaskById(id);
             if (taskItem != null)
             {
-                _context.TaskItem.Remove(taskItem);
+                await _taskItemService.DeleteTask(id);
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TaskItemExists(int id)
         {
-            return _context.TaskItem.Any(e => e.Id == id);
+            return _taskItemService.Exist(id);
         }
     }
 }

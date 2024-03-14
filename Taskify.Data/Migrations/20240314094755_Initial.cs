@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Taskify.Migrations
+namespace Taskify.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

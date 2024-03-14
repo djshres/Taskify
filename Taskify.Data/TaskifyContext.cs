@@ -5,7 +5,7 @@ namespace Taskify.Data
 {
     public class TaskifyContext : DbContext
     {
-        public TaskifyContext (DbContextOptions<TaskifyContext> options)
+        public TaskifyContext(DbContextOptions<TaskifyContext> options)
             : base(options)
         {
         }
