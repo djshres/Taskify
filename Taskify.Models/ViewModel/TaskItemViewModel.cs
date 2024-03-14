@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Taskify.Models.Enum;
 
-namespace Taskify.Models
+namespace Taskify.Models.ViewModel
 {
-    public class TaskItem
+    public class TaskItemViewModel
     {
         public int Id { get; set; }
 

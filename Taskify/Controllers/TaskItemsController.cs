@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Taskify.Core.IService;
 using Taskify.Models;
+using Taskify.Models.ViewModel;
 
 namespace Taskify.Controllers
 {
@@ -17,7 +18,6 @@ namespace Taskify.Controllers
         // GET: TaskItems
         public async Task<IActionResult> Index()
         {
-            // return View(await _context.TaskItem.ToListAsync());
             return View(await _taskItemService.GetAllTasks());
         }
 
@@ -43,7 +43,7 @@ namespace Taskify.Controllers
         // POST: TaskItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,DueDate,Priority")] TaskItem taskItem)
+        public async Task<IActionResult> Create(TaskItemViewModel taskItem)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Taskify.Controllers
         // POST: TaskItems/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,DueDate,Priority")] TaskItem taskItem)
+        public async Task<IActionResult> Edit(int id, TaskItemViewModel taskItem)
         {
             if (id != taskItem.Id)
             {
@@ -113,12 +113,7 @@ namespace Taskify.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var taskItem = await _taskItemService.GetTaskById(id);
-            if (taskItem != null)
-            {
-                await _taskItemService.DeleteTask(taskItem);
-            }
-
+            await _taskItemService.DeleteTask(id);
             return RedirectToAction(nameof(Index));
         }
 

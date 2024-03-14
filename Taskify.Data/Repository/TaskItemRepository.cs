@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Taskify.Data.Repository.IRepository;
+﻿using Taskify.Data.Repository.IRepository;
 using Taskify.Models;
 
 namespace Taskify.Data.Repository

@@ -1,46 +1,58 @@
-﻿using Taskify.Core.IService;
+﻿using AutoMapper;
+using Taskify.Core.IService;
 using Taskify.Data.Repository.IRepository;
 using Taskify.Models;
+using Taskify.Models.ViewModel;
 
 namespace Taskify.Core
 {
     public class TaskItemService : ITaskItemService
     {
         private readonly ITaskItemRepository _taskItemRepository;
+        private readonly IMapper _mapper;
 
-        public TaskItemService(ITaskItemRepository taskItemRepository)
+        public TaskItemService(ITaskItemRepository taskItemRepository, IMapper mapper)
         {
             _taskItemRepository = taskItemRepository;
+            _mapper = mapper;
         }
 
-        public async Task CreateTask(TaskItem item)
+        public async Task CreateTask(TaskItemViewModel item)
         {
-            await _taskItemRepository.Create(item);
+            var taskItem = _mapper.Map<TaskItem>(item);
+            await _taskItemRepository.Create(taskItem);
         }
 
-        public async Task DeleteTask(TaskItem item)
+        public async Task DeleteTask(int id)
         {
-            await _taskItemRepository.Delete(item);
+            var item = await _taskItemRepository.GetById(id);
+            var taskItem = _mapper.Map<TaskItem>(item);
+            await _taskItemRepository.Delete(taskItem);
         }
 
         public bool Exist(int id)
         {
-            return _taskItemRepository.Count(x => x.Id == id) == 0;
+            return _taskItemRepository.Count(x => x.Id == id) != 0;
         }
 
-        public async Task<IEnumerable<TaskItem>> GetAllTasks()
+        public async Task<IEnumerable<TaskItemViewModel>> GetAllTasks()
         {
-            return await _taskItemRepository.GetAll();
+            var taskItems = await _taskItemRepository.GetAll();
+            var taskItemViewModels = _mapper.Map<IEnumerable<TaskItemViewModel>>(taskItems);
+            return taskItemViewModels;
         }
 
-        public async Task<TaskItem> GetTaskById(int id)
+        public async Task<TaskItemViewModel> GetTaskById(int id)
         {
-            return await _taskItemRepository.GetById(id);
+            var taskItem = await _taskItemRepository.GetById(id);
+            var taskItemViewModel = _mapper.Map<TaskItemViewModel>(taskItem);
+            return taskItemViewModel;
         }
 
-        public async Task UpdateTask(TaskItem item)
+        public async Task UpdateTask(TaskItemViewModel item)
         {
-            await _taskItemRepository.Update(item);
+            var taskItem = _mapper.Map<TaskItem>(item);
+            await _taskItemRepository.Update(taskItem);
         }
     }
 }

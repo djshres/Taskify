@@ -31,12 +31,12 @@ namespace Taskify.Data.Repository
 
         public async Task<IEnumerable<T>> Find(Func<T, bool> predicate)
         {
-            return _context.Set<T>().Where(predicate);
+            return _context.Set<T>().AsNoTracking().Where(predicate);
         }
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            return await Task.FromResult(_context.Set<T>());
+            return await Task.FromResult(_context.Set<T>().AsNoTracking());
         }
 
         public async Task<T> GetById(int id)
