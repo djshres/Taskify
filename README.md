@@ -54,3 +54,47 @@ Task Manager enables you to perform the following operations:
 ### Additional Notes
 
 - **User Authentication**: There is no authentication required for accessing Task Manager in this version.
+
+
+### CI/CD Integration
+
+Task Manager utilizes Continuous Integration and Continuous Deployment (CI/CD) practices to automate the deployment process, ensuring efficient development and deployment workflows. The application is hosted on Azure and employs GitHub Actions for seamless CI/CD integration.
+
+## CI/CD Workflow
+The CI/CD workflow for Task Manager is as follows:
+
+GitHub Repository: Task Manager's source code is hosted on GitHub.
+
+# Continuous Integration (CI):
+
+Whenever changes are pushed to the repository, GitHub Actions automatically trigger the CI process.
+The CI process includes tasks such as building the application, running tests, and checking for code quality.
+Continuous Deployment (CD):
+
+Upon successful completion of the CI process, GitHub Actions trigger the CD process for deploying the application to Azure.
+Deployment scripts or Azure DevOps tasks are executed to deploy the application to the Azure App Service.
+Deployment to Azure:
+
+Task Manager is deployed to Azure App Service, providing a scalable and reliable hosting environment.
+Azure App Service ensures high availability and seamless deployment of the application.
+GitHub Actions Configuration
+Task Manager's CI/CD pipeline is configured using GitHub Actions. Here's a breakdown of the GitHub Actions configuration:
+
+Workflow File: The workflow is defined in a YAML file named ci-cd.yml located in the .github/workflows directory of the repository.
+
+Trigger: The workflow is triggered on events such as pushes to the main branch or pull requests.
+
+# Jobs:
+
+Build and Test: This job builds the application, runs tests, and checks for code quality using appropriate commands (e.g., dotnet build, dotnet test).
+Deployment: Upon successful completion of the build and test job, the deployment job is triggered.
+Environment Variables: GitHub Secrets or Azure Service Principal credentials are used as environment variables for securely accessing Azure resources during deployment.
+
+## Azure Integration
+Task Manager is hosted on Azure, leveraging Azure services for hosting and deployment. Key Azure services used in the deployment process include:
+
+Azure App Service: Task Manager is deployed to Azure App Service, which provides a fully managed platform for building, deploying, and scaling web applications.
+
+Azure Database: If applicable, Task Manager may utilize Azure Database services for data storage.
+
+Azure Resource Group: Azure resources related to Task Manager are organized within an Azure Resource Group for easier management and provisioning.
