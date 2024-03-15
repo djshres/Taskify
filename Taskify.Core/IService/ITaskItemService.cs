@@ -1,5 +1,4 @@
-﻿using Taskify.Models;
-using Taskify.Models.ViewModel;
+﻿using Taskify.Models.ViewModel;
 
 namespace Taskify.Core.IService
 {
