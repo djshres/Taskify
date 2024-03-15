@@ -7,7 +7,7 @@ using Taskify.Data.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TaskifyContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TaskifyContext") ?? throw new InvalidOperationException("Connection string 'TaskifyContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'TaskifyContext' not found.")));
 
 builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
 builder.Services.AddScoped<ITaskItemService, TaskItemService>();

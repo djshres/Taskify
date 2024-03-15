@@ -4,20 +4,20 @@ Welcome to Task Manager - your solution for efficient task management. Task Mana
 
 ### Live Application
 
-You can access the live application of Task Manager by visiting [sdfdsf.com](https://sdfdsf.com).
+You can access the live application of Task Manager by visiting "taskifypro.azurewebsites.net".
 
 ### Running Locally
 
 To run Task Manager locally, follow these simple steps:
 
-1. **Clone or Download the Repository**: Clone or download the Task Manager repository from [GitHub link here].
+1. **Clone or Download the Repository**: Clone or download the Task Manager repository from "https://github.com/djshres/Taskify".
 
 2. **Configure Local Database**:
    - Open the `appsettings.json` file located in the `src/Taskify` folder.
    - Update the connection string to point to your local database. If you prefer an in-memory database, set `"UseOnlyInMemoryDatabase": true`.
 
 3. **Run the Application**:
-   - Open a terminal window and navigate to the `Web` folder of the project.
+   - Open a terminal window and navigate to the `Taskify` folder of the project.
    - Run the following command:
      ```
      dotnet run
